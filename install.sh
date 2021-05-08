@@ -138,7 +138,14 @@ KDE(){
 }
 
 XFCE(){
-	arch-chroot /mnt pacman -Syu --noconfirm --needed xfce4 xfce4-goodies ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-battery-plugin xfce4-datetime-plugin xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-screensaver xfce4-taskmanager xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin file-roller network-manager-applet leafpad epdfview galculator capitaine-cursors arc-gtk-theme xdg-user-dirs-gtk lightdm lightdm-gtk-greeter xorg-server
+	arch-chroot /mnt pacman -Syu --noconfirm --needed xfce4 xfce4-goodies ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-battery-plugin xfce4-datetime-plugin xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-screensaver xfce4-taskmanager xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin file-roller network-manager-applet leafpad epdfview galculator capitaine-cursors arc-gtk-theme xdg-user-dirs-gtk lightdm lightdm-gtk-greeter xorg-server plank
+	############## SOUND #############################
+	######## URL ###  https://github.com/erikdubois/ArchXfce4/tree/master/installation  ################
+	arch-chroot /mnt pacman -Syu --noconfirm --needed pulseaudio pulseaudio-alsa pavucontrol 
+	arch-chroot /mnt pacman -Syu --noconfirm --needed alsa-utils alsa-plugins alsa-lib alsa-firmware
+	arch-chroot /mnt pacman -Syu --noconfirm --needed gst-plugins-good gst-plugins-bad gst-plugins-base gst-plugins-ugly  gstreamer
+	############### SOUND ############################
+	
 	arch-chroot /mnt systemctl enable lightdm.service
 	arch-chroot /mnt systemctl enable NetworkManager.service
      ## xfce4 mousepad parole ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-battery-plugin xfce4-datetime-plugin xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-screensaver xfce4-taskmanager xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin file-roller network-manager-applet leafpad epdfview galculator lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings capitaine-cursors arc-gtk-theme xdg-user-dirs-gtk ##
