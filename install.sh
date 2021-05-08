@@ -212,4 +212,4 @@ echo "install Arch linux is successfully"
 sleep 5
 }
 
-Main
+Ask_install_base
