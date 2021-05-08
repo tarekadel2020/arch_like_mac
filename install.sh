@@ -14,9 +14,6 @@ Timezone="Africa/Cairo"
 ## Desktop_GUI=""  ## (gnome - kde - xfce - mate - cinnamon - lxde - i3-wm - i3-gaps - dwm - openbox)
 User_Name="tarek"
 
-wifi_name=""
-wifi_pass=""
-
 ## All Variable ##
 
 
@@ -90,7 +87,7 @@ Wheel(){
 }
 
 App(){
-	arch-chroot /mnt pacman -Syu --noconfirm --needed sudo wget git dhcpcd networkmanager network-manager-applet wireless_tools wpa_supplicant ntfs-3g os-prober
+	arch-chroot /mnt pacman -Syu --noconfirm --needed sudo nano wget git dhcpcd networkmanager network-manager-applet wireless_tools wpa_supplicant ntfs-3g os-prober
 	arch-chroot /mnt systemctl enable NetworkManager
 }
 
@@ -117,7 +114,7 @@ Grub(){
 }
 
 Ask_install_base(){
-	read -p "Are you install base ? [Y-N]" accept_base
+	read -p "Are you install Arch with mac theme ? [Y-N]" accept_base
 	if [ $(echo "$accept_base" |tr [:upper:] [:lower:]) = "y" ]; then
 		Boot_partiton
 		Make_partitons
