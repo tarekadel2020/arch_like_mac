@@ -78,6 +78,9 @@ Add_user(){
 	arch-chroot /mnt useradd -m -G wheel,storage,optical,audio,video,root -s /bin/bash $User_Name
 	echo "Enter Password For $User_Name : "
 	arch-chroot /mnt passwd $User_Name
+	sleep 1
+	cp after_install.sh /mnt/home/$User_Name
+	sleep 1
 }
 
 Wheel(){
