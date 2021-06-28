@@ -70,6 +70,7 @@ sudo pacman -S appmenu-gtk-module
 Main(){
       #pamace-cli
       #pamace-aur
+      yaourt
       vala_menu_2
       mugshot
       #vala-panel-appmenu-common-git
