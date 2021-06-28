@@ -43,16 +43,16 @@ mugshot(){
       pamac build mugshot
 }
 
-vala_menu{
+vala_menu(){
 pamac build vala-panel-appmenu-common-git vala-panel-appmenu-registrar-git vala-panel-appmenu-xfce-git
 sudo pacman -S appmenu-gtk-module
 }
 
 Main(){
-      mugshot
       pamace-cli
       pamace-aur
       vala_menu
+      mugshot
       #vala-panel-appmenu-common-git
       #vala-panel-appmenu-registrar-git
       #vala-panel-appmenu-xfce-git
