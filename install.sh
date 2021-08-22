@@ -79,7 +79,7 @@ Add_user(){
 	echo "Enter Password For $User_Name : "
 	arch-chroot /mnt passwd $User_Name
 	sleep 1
-	cp after_install.sh /mnt/home/$User_Name
+	#cp after_install.sh /mnt/home/$User_Name
 	sleep 1
 }
 
