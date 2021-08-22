@@ -291,7 +291,7 @@ yes | yaourt -S mugshot
 cd ~
 git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
 cd WhiteSur-gtk-theme
-./install.sh -c dark -c light
+#./install.sh -c dark -c light
 #######################################
 
 ############# Plank Theme #############
@@ -304,18 +304,16 @@ cp -r *  ~/.local/share/plank/themes/
 cd ~
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
 cd WhiteSur-icon-theme
-./install.sh
+#./install.sh
 #######################################
 
 ########### install Curser ############
 cd ~
 git clone https://github.com/vinceliuice/WhiteSur-cursors.git
 cd WhiteSur-cursors
-./install.sh
+#./install.sh
 #######################################
-########### install Fonts #############
 
-#######################################
 
 exit
 exit
