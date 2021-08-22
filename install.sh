@@ -129,6 +129,7 @@ Ask_install_base(){
 		App
 		Grub
 		XFCE
+		After_install
 	fi
 }
 
@@ -217,6 +218,18 @@ DWM(){
 
 }
 
+
+After_install(){
+	echo "###  AFTER INSTALL ###"
+	arch-chroot /mnt /bin/bash -s << END
+	#!/bin/bash
+	set -e
+	cd /home/$User_Name/
+	touch tarek.text
+	exit
+	
+	END
+}
 
 
 
