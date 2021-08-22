@@ -220,9 +220,34 @@ DWM(){
 
 After_install(){
 	echo "###  AFTER INSTALL ###"
+	############# Background ##############
+	cp Background/*.* /mnt/usr/share/backgrounds/xfce/
+	#######################################
+	
+	########### install Fonts #############
+	mkdir /mnt/home/$User_Name/.fonts
+	cp -r  Fonts/* /mnt/home/$User_Name/.fonts
+	chown -R 1000:1000 /mnt/home/$User_Name/.fonts
+	#######################################
+	
+	######### install Xpple Menu ##########
+	cp -r xpple_menu /mnt/home/$User_Name
+	#######################################
+	
+	########### Lanucher rofi #############
+	mkdir -p /mnt/home/$User_Name/.config/rofi/launchers/misc/
+	cp  rofi/*  /mnt/home/$User_Name/.config/rofi/launchers/misc/
+	#######################################
+	
+	
 	arch-chroot /mnt <<END
 #!/bin/bash
 set -e
+
+yes | pacman -S gtk-engine-murrine sassc
+yes | pacman -S rofi
+
+
 #########  plank auto start ##########
 touch /etc/profile.d/autostart.sh 
 echo '#!/bin/bash' > /etc/profile.d/autostart.sh 
@@ -260,6 +285,36 @@ yes | sudo pacman -S appmenu-gtk-module
 
 ############# mugshot #################
 yes | yaourt -S mugshot
+#######################################
+
+######### install gtk theme ###########
+cd ~
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+cd WhiteSur-gtk-theme
+./install.sh -c dark -c light
+#######################################
+
+############# Plank Theme #############
+cd ~
+cd WhiteSur-gtk-theme/src/other/plank/
+cp -r *  ~/.local/share/plank/themes/
+#######################################
+
+########### install icons #############
+cd ~
+git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
+cd WhiteSur-icon-theme
+./install.sh
+#######################################
+
+########### install Curser ############
+cd ~
+git clone https://github.com/vinceliuice/WhiteSur-cursors.git
+cd WhiteSur-cursors
+./install.sh
+#######################################
+########### install Fonts #############
+
 #######################################
 
 exit
