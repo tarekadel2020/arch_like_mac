@@ -221,13 +221,43 @@ DWM(){
 
 After_install(){
 	echo "###  AFTER INSTALL ###"
-	chroot /mnt /bin/bash -s <<END
+	arch-chroot /mnt <<END
 #!/bin/bash
 set -e
 cd /home/$User_Name/
-touch tarek.text
+su - $User_Name
+
+##########  install Yaourt ###########
+sudo pacman -S --needed base-devel git wget yajl
+cd /tmp
+git clone https://aur.archlinux.org/package-query.git
+cd package-query/
+makepkg -si && cd /tmp/
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt/
+makepkg -si
+#######################################
+
+##########  install Pamac-aur #########
+# yaourt -S pamac-aur
+#######################################
+
+
+######### vala-panel-appmenu ##########
+yaourt -S vala-panel-appmenu-common-git
+yaourt -S vala-panel-appmenu-registrar-git
+yaourt -S vala-panel-appmenu-xfce-git
+sudo pacman -S appmenu-gtk-module
+#######################################
+
+
+############# mugshot #################
+yaourt -S mugshot
+#######################################
+
 exit
-	
+exit
+
 END
 }
 
