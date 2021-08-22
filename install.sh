@@ -224,18 +224,21 @@ After_install(){
 	arch-chroot /mnt <<END
 #!/bin/bash
 set -e
-cd /home/$User_Name/
+#cd /home/$User_Name/
 su - $User_Name
+whoami
+sleep 5
 
 ##########  install Yaourt ###########
-sudo pacman -S --needed base-devel git wget yajl
+yes | sudo pacman -Syy
+yes | sudo pacman -S --needed base-devel git wget yajl
 cd /tmp
 git clone https://aur.archlinux.org/package-query.git
 cd package-query/
-makepkg -si && cd /tmp/
+yes | makepkg -si && cd /tmp/
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt/
-makepkg -si
+yes | makepkg -si
 #######################################
 
 ##########  install Pamac-aur #########
@@ -244,15 +247,15 @@ makepkg -si
 
 
 ######### vala-panel-appmenu ##########
-yaourt -S vala-panel-appmenu-common-git
-yaourt -S vala-panel-appmenu-registrar-git
-yaourt -S vala-panel-appmenu-xfce-git
-sudo pacman -S appmenu-gtk-module
+yes | yaourt -S vala-panel-appmenu-common-git
+yes | yaourt -S vala-panel-appmenu-registrar-git
+yes | yaourt -S vala-panel-appmenu-xfce-git
+yes | sudo pacman -S appmenu-gtk-module
 #######################################
 
 
 ############# mugshot #################
-yaourt -S mugshot
+yes | yaourt -S mugshot
 #######################################
 
 exit
