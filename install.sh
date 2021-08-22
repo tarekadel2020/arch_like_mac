@@ -80,7 +80,6 @@ Add_user(){
 	arch-chroot /mnt passwd $User_Name
 	sleep 1
 	#cp after_install.sh /mnt/home/$User_Name
-	sleep 1
 }
 
 Wheel(){
@@ -221,13 +220,13 @@ DWM(){
 After_install(){
 	echo "###  AFTER INSTALL ###"
 	############# Background ##############
-	cp Background/*.* /mnt/usr/share/backgrounds/xfce/
+	#cp Background/*.* /mnt/usr/share/backgrounds/xfce/
 	#######################################
 	
 	########### install Fonts #############
 	mkdir /mnt/home/$User_Name/.fonts
 	cp -r  Fonts/* /mnt/home/$User_Name/.fonts
-	chown -R 1000:1000 /mnt/home/$User_Name/.fonts
+	#chown -R 1000:1000 /mnt/home/$User_Name/.fonts
 	#######################################
 	
 	######### install Xpple Menu ##########
@@ -235,8 +234,8 @@ After_install(){
 	#######################################
 	
 	########### Lanucher rofi #############
-	mkdir -p /mnt/home/$User_Name/.config/rofi/launchers/misc/
-	cp  rofi/*  /mnt/home/$User_Name/.config/rofi/launchers/misc/
+	#mkdir -p /mnt/home/$User_Name/.config/rofi/launchers/misc/
+	#cp  rofi/*  /mnt/home/$User_Name/.config/rofi/launchers/misc/
 	#######################################
 	
 	
