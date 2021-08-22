@@ -277,3 +277,10 @@ sleep 5
 }
 
 Main
+
+
+
+
+##################################
+# how to hide shadwo for plank on xfce
+# https://www.youtube.com/watch?v=cHKl-WQ265w
