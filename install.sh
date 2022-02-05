@@ -231,11 +231,13 @@ After_install(){
 	
 	######### install Xpple Menu ##########
 	cp -r xpple_menu /mnt/home/$User_Name
+	chown -R 1000:1000 /mnt/home/$User_Name/xpple_menu
 	#######################################
 	
 	########### Lanucher rofi #############
 	mkdir -p /mnt/home/$User_Name/.config/rofi/launchers/misc/
 	cp  rofi/*  /mnt/home/$User_Name/.config/rofi/launchers/misc/
+	chown -R 1000:1000 /mnt/home/$User_Name/.config/rofi/launchers/misc/rofi/*
 	#######################################
 	
 	
@@ -260,10 +262,10 @@ sleep 5
 ##########  install Yaourt ###########
 yes | sudo pacman -Syy
 yes | sudo pacman -S --needed base-devel git wget yajl
-cd /tmp
+cd /home/$User_Name
 git clone https://aur.archlinux.org/package-query.git
 cd package-query/
-yes | makepkg -si && cd /tmp/
+yes | makepkg -si && cd /home/$User_Name
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt/
 yes | makepkg -si
