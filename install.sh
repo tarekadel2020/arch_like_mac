@@ -240,7 +240,7 @@ After_install(){
 	chown -R 1000:1000 /mnt/home/$User_Name/.config/rofi/launchers/misc/rofi/*
 	#######################################
 	
-	
+	arch-chroot /mnt pacman -Syu --noconfirm --needed yajl
 	arch-chroot /mnt <<END
 #!/bin/bash
 set -e
