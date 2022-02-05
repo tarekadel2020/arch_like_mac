@@ -248,6 +248,7 @@ set -e
 yes | pacman -S gtk-engine-murrine sassc
 yes | pacman -S rofi
 
+sleep 5
 
 #########  plank auto start ##########
 #touch /etc/profile.d/autostart.sh 
@@ -266,6 +267,7 @@ cd /home/$User_Name
 git clone https://aur.archlinux.org/package-query.git
 cd package-query/
 yes | makepkg -si && cd /home/$User_Name
+sleep 5
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt/
 yes | makepkg -si
@@ -275,39 +277,42 @@ yes | makepkg -si
 # yaourt -S pamac-aur
 #######################################
 
-
+sleep 5
 ######### vala-panel-appmenu ##########
 yes | yaourt -S vala-panel-appmenu-common-git
+sleep 5
 yes | yaourt -S vala-panel-appmenu-registrar-git
+sleep 5
 yes | yaourt -S vala-panel-appmenu-xfce-git
+sleep 5
 yes | sudo pacman -S appmenu-gtk-module
 #######################################
-
+sleep 5
 
 ############# mugshot #################
 yes | yaourt -S mugshot
 #######################################
-
+sleep 5
 ######### install gtk theme ###########
 cd ~
 git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
 cd WhiteSur-gtk-theme
 #./install.sh -c dark -c light
 #######################################
-
+sleep 5
 ############# Plank Theme #############
 cd ~
 cd WhiteSur-gtk-theme/src/other/plank/
 cp -r *  ~/.local/share/plank/themes/
 #######################################
-
+sleep 5
 ########### install icons #############
 cd ~
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
 cd WhiteSur-icon-theme
 #./install.sh
 #######################################
-
+sleep 5
 ########### install Curser ############
 cd ~
 git clone https://github.com/vinceliuice/WhiteSur-cursors.git
