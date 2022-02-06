@@ -230,8 +230,8 @@ set -e
 su - $USER_NAME 
 
 ########### install Yaourt ############
-#cd /home/$USER_NAME && git clone https://aur.archlinux.org/package-query.git && (cd package-query && makepkg -si --noconfirm)
-#cd /home/$USER_NAME && git clone https://aur.archlinux.org/yaourt.git && (cd yaourt && makepkg -si --noconfirm)
+#cd /home/$User_Name && git clone https://aur.archlinux.org/package-query.git && (cd package-query && makepkg -si --noconfirm)
+#cd /home/$User_Name && git clone https://aur.archlinux.org/yaourt.git && (cd yaourt && makepkg -si --noconfirm)
 #yaourt -Syy
 #######################################
 
@@ -242,7 +242,7 @@ su - $USER_NAME
 
 
 ########### install Yay ############
-cd /home/$USER_NAME && git clone https://aur.archlinux.org/yay.git && (cd yay && makepkg -si --noconfirm)
+cd /home/$User_Name && git clone https://aur.archlinux.org/yay.git && (cd yay && makepkg -si --noconfirm)
 yay -Syy
 ####################################
 
