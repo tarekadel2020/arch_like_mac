@@ -196,8 +196,10 @@ yay -S --sudoloop --noconfirm  vala-panel-appmenu-xfce-git
 #yay -S --sudoloop --noconfirm panther-launcher-git
 #####################################
 
+exit
+exit
 
-
+END
 }
 
 
