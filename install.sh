@@ -244,21 +244,21 @@ sleep 3
 
 
 ########### install Yay ############
-cd /home/$User_Name && git clone https://aur.archlinux.org/yay-git.git && (cd yay && makepkg -si --noconfirm)
+cd /home/$User_Name && git clone https://aur.archlinux.org/yay-git.git && (cd yay* && makepkg -si --noconfirm)
 yay -Syy
 ####################################
 
 
 ######### vala-panel-appmenu ##########
-yay -S vala-panel-appmenu-common-git
-yay -S vala-panel-appmenu-registrar-git
-yay -S vala-panel-appmenu-xfce-git
+yay -S --sudoloop --noconfirm  vala-panel-appmenu-common-git
+yay -S --sudoloop --noconfirm  vala-panel-appmenu-registrar-git
+yay -S --sudoloop --noconfirm  vala-panel-appmenu-xfce-git
 sudo pacman -S appmenu-gtk-module
 #######################################
 
 
 ######### panther-launcher ##########
-yay -S panther-launcher-git
+yay -S --sudoloop --noconfirm panther-launcher-git
 #####################################
 
 
