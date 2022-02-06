@@ -244,7 +244,7 @@ sleep 3
 
 
 ########### install Yay ############
-cd /home/$User_Name && git clone https://aur.archlinux.org/yay.git && (cd yay && makepkg -si --noconfirm)
+cd /home/$User_Name && git clone https://aur.archlinux.org/yay-git.git && (cd yay && makepkg -si --noconfirm)
 yay -Syy
 ####################################
 
