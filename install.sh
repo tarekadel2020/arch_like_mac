@@ -227,7 +227,9 @@ After(){
 	arch-chroot /mnt <<END
 #!/bin/bash
 set -e
-su - $USER_NAME 
+su - $User_Name
+whoami
+sleep 3
 
 ########### install Yaourt ############
 #cd /home/$User_Name && git clone https://aur.archlinux.org/package-query.git && (cd package-query && makepkg -si --noconfirm)
