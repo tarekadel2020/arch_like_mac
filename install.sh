@@ -255,6 +255,11 @@ sudo pacman -S appmenu-gtk-module
 #######################################
 
 
+######### panther-launcher ##########
+yay -S panther-launcher-git
+#####################################
+
+
 
 }
 
