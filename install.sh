@@ -86,6 +86,7 @@ Wheel(){
 	read -p "Are you want give all user sudo primmion ? [Y-N]" accept_base
 	if [ $(echo "$accept_base" |tr [:upper:] [:lower:]) = "y" ]; then
 		arch-chroot /mnt sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
 	fi
 }
 
@@ -157,6 +158,7 @@ After(){
 	echo "###  AFTER INSTALL ###"
 	sleep 3
 	arch-chroot /mnt sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+	arch-chroot /mnt sed -i 's/%wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 	arch-chroot /mnt <<END
 #!/bin/bash
 set -e
