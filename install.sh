@@ -128,7 +128,8 @@ Ask_install_base(){
 		App
 		Grub
 		XFCE
-		After_install
+		#After_install
+		After
 	fi
 }
 
@@ -215,6 +216,48 @@ DWM(){
 	arch-chroot /mnt pacman -Syu --noconfirm --needed ttf-font-awesome alsa-utils firefox nitrogen htop ntfs-3g vlc sxhkd thunar zathura zathura-pdf-poppler feh mypaint man
 
 }
+
+After(){
+	arch-chroot /mnt pacman -Syu --noconfirm --needed git wget yajl
+	
+	clear
+	echo "###  AFTER INSTALL ###"
+	sleep 3
+	arch-chroot /mnt sed -i 's/%wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+	arch-chroot /mnt <<END
+#!/bin/bash
+set -e
+su - $USER_NAME 
+
+########### install Yaourt ############
+#cd /home/$USER_NAME && git clone https://aur.archlinux.org/package-query.git && (cd package-query && makepkg -si --noconfirm)
+#cd /home/$USER_NAME && git clone https://aur.archlinux.org/yaourt.git && (cd yaourt && makepkg -si --noconfirm)
+#yaourt -Syy
+#######################################
+
+
+########### install pamac #############
+#yaourt -S pamac-aur
+#######################################
+
+
+########### install Yay ############
+cd /home/$USER_NAME && git clone https://aur.archlinux.org/yay.git && (cd yay && makepkg -si --noconfirm)
+yay -Syy
+####################################
+
+
+######### vala-panel-appmenu ##########
+yay -S vala-panel-appmenu-common-git
+yay -S vala-panel-appmenu-registrar-git
+yay -S vala-panel-appmenu-xfce-git
+sudo pacman -S appmenu-gtk-module
+#######################################
+
+
+
+}
+
 
 
 After_install(){
