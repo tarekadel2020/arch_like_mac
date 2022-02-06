@@ -134,13 +134,6 @@ Ask_install_base(){
 }
 
 
-KDE(){
-	arch-chroot /mnt pacman -Syu --noconfirm --needed xorg plasma plasma-meta plasma-wayland-session kde-applications-meta sddm
-	arch-chroot /mnt systemctl enable sddm.service
-	arch-chroot /mnt systemctl enable NetworkManager.service
-				
-}
-
 XFCE(){
 	arch-chroot /mnt pacman -Syu --noconfirm --needed vlc xfce4 xfce4-goodies ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-battery-plugin xfce4-datetime-plugin xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-screensaver xfce4-taskmanager xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin file-roller network-manager-applet leafpad epdfview galculator capitaine-cursors arc-gtk-theme xdg-user-dirs-gtk lightdm lightdm-gtk-greeter xorg-server plank
 	############## SOUND #############################
@@ -156,74 +149,14 @@ XFCE(){
 }
 
 
-DWM(){
-	arch-chroot /mnt pacman -Syu --noconfirm --needed base-devel libx11 libxft xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
-	arch-chroot /mnt mkdir /home/$User_Name/.config
-	chown 1000:1000 /mnt/home/$User_Name/.config
-	arch-chroot /mnt mkdir /home/$User_Name/.config/dwm
-	chown 1000:1000 /mnt/home/$User_Name/.config/dwm
-	arch-chroot /mnt mkdir /home/$User_Name/.config/st
-	chown 1000:1000 /mnt/home/$User_Name/.config/st
-	arch-chroot /mnt mkdir /home/$User_Name/.config/dmenu
-	chown 1000:1000 /mnt/home/$User_Name/.config/dmenu
-
-	arch-chroot /mnt git clone git://git.suckless.org/dwm /home/$User_Name/.config/dwm
-	arch-chroot /mnt git clone git://git.suckless.org/st /home/$User_Name/.config/st
-	arch-chroot /mnt git clone git://git.suckless.org/dmenu /home/$User_Name/.config/dmenu
-				
-				
-	#arch-chroot /mnt cd /home/$User_Name/.config/dwm && make clean install
-	#sleep 2
-	#arch-chroot /mnt cd /home/$User_Name/.config/st && make clean install
-	#sleep 2
-	#arch-chroot /mnt cd /home/$User_Name/.config/dmenu && make clean install
-	#sleep 2
-
-
-
-	arch-chroot /mnt pacman -Syu --noconfirm --needed lightdm lightdm-gtk-greeter  ## lightdm-gtk-greeter-settings
-	sleep 3
-	arch-chroot /mnt systemctl start lightdm.service
-	sleep 3
-	arch-chroot /mnt systemctl enable lightdm.service
-
-
-
-
-	arch-chroot /mnt mkdir /usr/share/xsessions
-	sleep 1
-	arch-chroot /mnt touch /usr/share/xsessions/dwm.desktop
-	sleep 2
-	echo -e "[Desktop Entry]\nEncoding=UTF-8\nName=Dwm\nComment=Dynamic window manager\nExec=dwm\nIcon=dwm\nType=XSession" > /mnt/usr/share/xsessions/dwm.desktop
-	sleep 2
-	touch /mnt/home/$User_Name/.dmrc
-	chown 1000:1000 /mnt/home/$User_Name/.dmrc
-	echo -e "[Desktop]\nSession=dwm" > /mnt/home/$User_Name/.dmrc
-				
-				
-	mkdir /mnt/home/$User_Name/.config/sxhkd
-	chown 1000:1000 /mnt/home/$User_Name/.config/sxhkd
-	touch /mnt/home/$User_Name/.config/sxhkd/sxhkdrc
-	chown 1000:1000 /mnt/home/$User_Name/.config/sxhkd/sxhkdrc
-	touch /mnt/home/$User_Name/.profile
-	chown 1000:1000 /mnt/home/$User_Name/.profile
-	echo -e "nitrogen --restore &\nsxhkd &" > /mnt/home/$User_Name/.profile
-	## echo -e "dwm &\nnitrogen --restore &\nsxhkd" > /mnt/home/$User_Name/.profile
-				
-				
-
-	## APPS ##
-	arch-chroot /mnt pacman -Syu --noconfirm --needed ttf-font-awesome alsa-utils firefox nitrogen htop ntfs-3g vlc sxhkd thunar zathura zathura-pdf-poppler feh mypaint man
-
-}
 
 After(){
-	arch-chroot /mnt pacman -Syu --noconfirm --needed git wget yajl
+	arch-chroot /mnt pacman -Syu --noconfirm --needed git wget yajl appmenu-gtk-module
 	
 	clear
 	echo "###  AFTER INSTALL ###"
 	sleep 3
-	arch-chroot /mnt sed -i 's/%wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+	arch-chroot /mnt sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 	arch-chroot /mnt <<END
 #!/bin/bash
 set -e
@@ -253,12 +186,12 @@ yay -Syy
 yay -S --sudoloop --noconfirm  vala-panel-appmenu-common-git
 yay -S --sudoloop --noconfirm  vala-panel-appmenu-registrar-git
 yay -S --sudoloop --noconfirm  vala-panel-appmenu-xfce-git
-sudo pacman -S appmenu-gtk-module
+#sudo pacman -S appmenu-gtk-module
 #######################################
 
 
 ######### panther-launcher ##########
-yay -S --sudoloop --noconfirm panther-launcher-git
+#yay -S --sudoloop --noconfirm panther-launcher-git
 #####################################
 
 
